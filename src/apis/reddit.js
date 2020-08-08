@@ -1,5 +1,5 @@
 const RedditAPI = require("reddit-wrapper-v2");
-// const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config()
 
 const redditWrapper = new RedditAPI({
   // Options for Reddit Wrapper

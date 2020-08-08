@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pug": "^3.0.0",
-    "reddit-wrapper-v2": "^1.1.6"
+    "reddit-wrapper-v2": "^1.1.6",
+    "redis": "^3.0.2"
   }
 }
