@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+  div#hero
+    p.hero-title Joot-Zoo
+    p.hero-text Centralized content aggregated by Michael Curry
+  main
+    h1#reddit Reddit Posts
+    //- use javascript to pull upvoted or saved posts from reddit API?
+    h1#youtube YouTube Videos
+    //- use js to pull videos from a playlist
+    h1#dev Dev.to Posts
+    //- pull Dev.to articles
+  aside
+    ul
+      li
+        a(href="#reddit") Reddit Posts
+      li
+        a(href="#youtube") YouTube Vids
+      li
+        a(href="#dev") Dev.to Posts
