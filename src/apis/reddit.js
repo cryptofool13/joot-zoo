@@ -15,7 +15,7 @@ const redditWrapper = new RedditAPI({
 });
 
 redditWrapper.api
-  .get("/user/dr_steve_bruel/upvoted", {
+  .get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
     limit: 2,
   })
   .then((response) => {
