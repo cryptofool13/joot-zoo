@@ -1,5 +1,5 @@
 const RedditAPI = require("reddit-wrapper-v2");
-const dotenv = require('dotenv').config()
+const dotenv = require("dotenv").config();
 
 const redditWrapper = new RedditAPI({
   // Options for Reddit Wrapper
@@ -14,13 +14,26 @@ const redditWrapper = new RedditAPI({
   logs: true,
 });
 
-redditWrapper.api
-  .get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
-    limit: 2,
-  })
-  .then((response) => {
-    let responseCode = response[0];
-    let responseData = response[1].data.children;
+// redditWrapper.api
+//   .get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
+//     limit: 10,
+//   })
+//   .then((response) => {
+//     let responseCode = response[0];
+//     let responseData = response[1].data.children;
 
-    console.log("Received response (" + responseCode + "): ", responseData);
-  });
+//     console.log(responseData);
+//     // store resonse in Redis with exp of 1 day
+//   });
+
+  function getTenPosts () {
+    return redditWrapper.api.get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
+      limit: 10
+    }).then(res => {
+      return res[1].data
+    })
+  }
+
+  module.exports = {
+    getTenPosts
+  }
