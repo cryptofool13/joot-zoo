@@ -3,7 +3,8 @@ const { client, getAsync } = require("../cache");
 const cache = require("../cache");
 
 function indexPage(req, res, next) {
-  res.render("index", { title: "Home" });
+  const posts = getRedditPosts();
+  res.render("index", { title: "Home", posts: posts });
 }
 
 function getRedditPosts(req, res, next) {
@@ -15,20 +16,23 @@ function getRedditPosts(req, res, next) {
           return {
             sub: post.data.subreddit_name_prefixed,
             title: post.data.title,
-            url: post.data.url,
+            url: 'https://www.reddit.com' + post.data.permalink,
             author: post.data.author,
             thumbnail: post.data.thumbnail,
+
           };
         });
         client.hset("reddit", "posts", JSON.stringify(posts));
-        // set expiration 
-        client.expire('reddit', 10)
-        res.json(posts);
+        // set expiration
+        client.expire("reddit", 120);
+        // next(posts);
+        res.render('index', {title: "Home", posts})
       });
     } else {
       // serve from cache and reset expiration
-      client.expire('reddit', 10)
-      res.json(JSON.parse(data));
+      client.expire("reddit", 10);
+      // next(JSON.parse(data));
+      res.render('index', {title: "Home", posts: JSON.parse(data)})
     }
   });
 }
