@@ -1,9 +1,23 @@
 extends layout.pug
 
+block styles
+  link(rel="stylesheet", href="css/index.css")
+
 block content
+
   div#hero
     p.hero-title Joot-Zoo
     p.hero-text Centralized content aggregated by Michael Curry
+  aside#sidebar
+    ul
+      li
+        a(href="#reddit") Reddit Posts
+      li
+        a(href="#youtube") YouTube Vids
+      li
+        a(href="#dev") Dev.to Posts
+      li
+        a(href="#top") Back to the top
   main
     h1#reddit Reddit Posts
 
@@ -13,11 +27,3 @@ block content
     //- use js to pull videos from a playlist
     h1#dev Dev.to Posts
     //- pull Dev.to articles
-  aside
-    ul
-      li
-        a(href="#reddit") Reddit Posts
-      li
-        a(href="#youtube") YouTube Vids
-      li
-        a(href="#dev") Dev.to Posts
