@@ -19,11 +19,13 @@ block content
       li
         a(href="#top") Back to the top
   main
-    h1#reddit Reddit Posts
-
-    include includes/reddit_post
+    section.reddit-section
+      h1#reddit Reddit Posts
+      include includes/reddit_post
     //- use javascript to pull upvoted or saved posts from reddit API?
-    h1#youtube YouTube Videos
+    section.yt-section
+      h1#youtube YouTube Videos
     //- use js to pull videos from a playlist
-    h1#dev Dev.to Posts
+    section.dev-section
+      h1#dev Dev.to Posts
     //- pull Dev.to articles

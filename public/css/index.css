@@ -21,3 +21,18 @@ body {
 main {
   grid-column: left-edge / sidebar-left;
 }
+
+section {
+  margin-inline-end: 2rem;
+  margin-inline-start: 2rem;
+}
+h1 {
+  text-align: center;
+}
+
+.reddit-post-list {
+  list-style: none;
+}
+.reddit-post-item {
+  margin-block-end: 1rem;
+}
