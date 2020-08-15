@@ -14,26 +14,18 @@ const redditWrapper = new RedditAPI({
   logs: true,
 });
 
-// redditWrapper.api
-//   .get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
-//     limit: 10,
-//   })
-//   .then((response) => {
-//     let responseCode = response[0];
-//     let responseData = response[1].data.children;
-
-//     console.log(responseData);
-//     // store resonse in Redis with exp of 1 day
-//   });
-
-  function getTenPosts () {
-    return redditWrapper.api.get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
-      limit: 10
-    }).then(res => {
-      return res[1].data
+// TODO go thru posts and check if post has been removed
+// TODO get posts from `pre-approved` subreddits to prevent NSFW/inappropriate content
+function getTenPosts() {
+  return redditWrapper.api
+    .get(`/user/${process.env.REDDIT_USERNAME}/upvoted`, {
+      limit: 10,
     })
-  }
+    .then((res) => {
+      return res[1].data;
+    });
+}
 
-  module.exports = {
-    getTenPosts
-  }
+module.exports = {
+  getTenPosts,
+};
