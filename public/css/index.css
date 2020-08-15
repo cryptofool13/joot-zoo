@@ -1,0 +1,23 @@
+body {
+  display: grid;
+  grid-template-columns: [left-edge] 80fr [sidebar-left] 20fr [right-edge];
+}
+
+#hero {
+  height: 100vh;
+  grid-column: left-edge / sidebar-left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar {
+  position: sticky;
+  top: 0;
+  grid-column: sidebar-left / right-edge;
+}
+
+main {
+  grid-column: left-edge / sidebar-left;
+}
