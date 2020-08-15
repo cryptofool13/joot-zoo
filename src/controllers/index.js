@@ -24,13 +24,13 @@ function getRedditPosts(req, res, next) {
         });
         client.hset("reddit", "posts", JSON.stringify(posts));
         // set expiration
-        client.expire("reddit", 120);
+        client.expire("reddit", 1200);
         // next(posts);
         res.render('index', {title: "Home", posts})
       });
     } else {
       // serve from cache and reset expiration
-      client.expire("reddit", 10);
+      client.expire("reddit", 1200);
       // next(JSON.parse(data));
       res.render('index', {title: "Home", posts: JSON.parse(data)})
     }
